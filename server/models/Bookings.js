@@ -11,7 +11,7 @@ const BookingsSchema = new Schema({
         type: String,
         required: false,
     },
-    service: {
+    serviceName: {
         type: Schema.Types.ObjectId,
         // this needs to match the services model name
         ref: 'Services',

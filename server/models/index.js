@@ -1,3 +1,4 @@
 const Bookings = require('./Bookings');
+const Services = require('./Services');
 
-module.exports = { Bookings };
+module.exports = { Bookings, Services };
