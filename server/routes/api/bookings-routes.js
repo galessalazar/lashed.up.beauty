@@ -8,6 +8,8 @@ const {
     deleteBooking     
 } = require('../../controllers/user-controller');
 
+// import middleware for authentication here when ready
+
 // sets up crud
 // sets up get route at /clients/:id/:clientName, when a get request hits this endpoint, it will invoke the getsingleclient function using id and clientname as route parameters
 router.get('/clients/:id/:clientName', getSingleClient);

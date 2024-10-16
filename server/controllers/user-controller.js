@@ -1,4 +1,4 @@
-const { Bookings, Services } = require("../models");
+const { Bookings } = require("../models");
 
 module.exports = {
   // get the client by id or name
@@ -20,6 +20,18 @@ module.exports = {
       res
         .status(500)
         .json({ message: "Error occured while retrieving client" });
+    }
+  },
+
+  // gets all clients
+
+  async getAllClients(req, res) {
+    try {
+      const foundAllClients = await Bookings.find();
+      res.json(foundAllClients);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Error retrieving clients' });
     }
   },
   // creates a new booking
