@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // this sets up a basic express.js server for a node.js app
 
 const express = require('express');
@@ -21,5 +23,8 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(routes);
 
 db.once('open', () => {
-    app.listen(PORT, () => console.log(`Now listenting on localhost:${PORT}`));
+app.listen(PORT, () => 
+    console.log(`Now listenting on http://localhost:${PORT}`));
 });
+
+
