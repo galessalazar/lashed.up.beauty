@@ -4,10 +4,17 @@ const BookingsSchema = new Schema({
     clientName: {
         type: String,
         required: true,
+        index: true,
+    },
+    // future- add validation like regex
+    clientPhone: {
+        type: String,
+        required: false,
     },
     service: {
         type: Schema.Types.ObjectId,
-        ref: 'Service',
+        // this needs to match the services model name
+        ref: 'Services',
         required: true,
     }, 
     price: {
