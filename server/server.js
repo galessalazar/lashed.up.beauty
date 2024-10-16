@@ -4,7 +4,7 @@ const express = require('express');
 // path is a built in node.js module
 const path = require('path');
 const db = require('./config/connection');
-const routes = require('./routes');
+const routes = require('./routes/api/index');
 
 const app = express();
 const PORT = process.env.PORT || 3001;

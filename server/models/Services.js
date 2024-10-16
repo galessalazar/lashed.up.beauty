@@ -1,4 +1,4 @@
-const { Schema, model } = require=('mongoose');
+const { Schema, model } = require('mongoose');
 
 const ServicesSchema = new Schema({
    serviceName: {
@@ -26,4 +26,4 @@ const ServicesSchema = new Schema({
 
 const Services = model('Services', ServicesSchema);
 
-module.exports= Services;
+module.exports = Services;
