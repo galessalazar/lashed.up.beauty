@@ -1,8 +1,11 @@
+import Hero from "./components/Hero";
 
 const App = () => {
   return (
-    <div>Lashed UP Beaut</div>
-  )
-}
+    <div>
+      <Hero />
+    </div>
+  );
+};
 
-export default App
+export default App;
