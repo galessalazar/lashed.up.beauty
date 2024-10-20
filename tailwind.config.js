@@ -1,16 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./client/index.html", "./client/src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        sans 
-      }
+        merienda: ["Merienda", "cursive"],
+      },
     },
   },
   plugins: [],
-}
-
+};
+//  content: ["./client/index.html", "./client/src/**/*.{js,ts,jsx,tsx}"],
