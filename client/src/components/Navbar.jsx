@@ -4,7 +4,6 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-10 items-center justify-between">
           {/* just hitting enter and putting in the name moved the rest of the navbar contents to the rigth, no se but it worked */}
-          Lashed Up Beauty
           <div className="flex items-center flex-shrink-0">
             <span
               className="text-white text-lg font-bold"
