@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
-const Card = ({ title, content }) => {
+const Card = ({ title, content, link }) => {
   const cardStyle = {
     border: "1px solid #ccc",
     borderRadius: "8px",
@@ -21,7 +22,8 @@ const Card = ({ title, content }) => {
 
   return (
     <div style={cardStyle}>
-      <h2 style={ titleStyle}>{title}</h2>
+      <Link to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
+      <h2 style={ titleStyle}>{title}</h2></Link>
       <p>{content}</p>
     </div>
   );
@@ -30,6 +32,7 @@ const Card = ({ title, content }) => {
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 export default Card;
