@@ -12,9 +12,16 @@ const Card = ({ title, content }) => {
     boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
   };
 
+  const titleStyle = {
+    fontSize: "2rem",
+    fontWeight: "bold",
+    fontFamily: "Playfair Display",
+    margin: "0 0 10px",
+  };
+
   return (
     <div style={cardStyle}>
-      <h2>{title}</h2>
+      <h2 style={ titleStyle}>{title}</h2>
       <p>{content}</p>
     </div>
   );
