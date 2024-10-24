@@ -43,7 +43,7 @@ const Hero = () => {
         <Card
           title="Booking"
           content="Book your appointment easily online. For a seamless experience, please click on BOOKINGS to review the booking rules and details. Your understanding of the policies ensures a smooth and enjoyable appointment."
-          link="/booking"
+          link="/bookings"
         />
       </div>
     </div>
