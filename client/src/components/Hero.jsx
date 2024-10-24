@@ -5,6 +5,8 @@ const Hero = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        fontFamily: 'Playfair Display',
+        fontSize: '2rem',
     };
     return (
         <div style={heroStyle}>

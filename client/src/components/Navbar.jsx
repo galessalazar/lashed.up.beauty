@@ -7,9 +7,9 @@ const Navbar = () => {
           <div className="flex items-center flex-shrink-0">
             <span
               className="text-white text-lg font-bold"
-              style={{ fontFamily: "Merienda, cursive" }}
+              style={{ fontFamily: "Playfair Display" }}
             >
-              Lashed Up Beauty
+              Lashed Up Beauty Bar
             </span>
           </div>
           <div className="hidden sm:ml-6 sm:block">
