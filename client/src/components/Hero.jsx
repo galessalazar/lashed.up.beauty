@@ -8,7 +8,7 @@ const Hero = () => {
     };
     return (
         <div style={heroStyle}>
-            <h1>Main</h1>
+            <h1>Glamour in Every Lash Transformation</h1>
         </div>
     );
 };
