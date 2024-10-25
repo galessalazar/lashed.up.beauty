@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import Modal from "../components/modal";
+import BookingForm from "../components/BookingForm";
+
 const Bookings = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   }
+
+
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
       <h1>Bookings</h1>
-      <button onClick={toggleModal} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">View Policies</button>
+  
+  {/* modal to view policies */}
+      <button onClick={toggleModal} className="mt-4 bg-gray-400 text-black px-4 py-2 rounded">View Policies</button>
 
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
         <h2 className="text-2xl font-bold mb-2">POLICIES AND PROCEDURES</h2>
@@ -24,6 +30,10 @@ const Bookings = () => {
           Please be aware these policies and procedures are in place for a reason. If you have any questions or concerns please message me!
         </p>
       </Modal>
+
+      <div className="mt-8">
+        <BookingForm />
+      </div>
     </div>
   );
 };

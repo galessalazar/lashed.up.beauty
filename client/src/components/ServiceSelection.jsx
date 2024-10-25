@@ -21,7 +21,7 @@ const ServiceSelection = ({ onServiceSelect }) => {
             <li key={service.id} className={`border p-4 rounded ${selectedService?.id === service.id ? border-blue-500 : 'border-gray-300'}`}>
                 <h3 className='text-lg font-semibold'>{service.name}</h3>
                 <p>{service.duration} - {service.price}</p>
-                <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded" onClick={() => handleSelect(service)}>
+                <button className="mt-2 px-4 py-2 bg-gray-500 text-white rounded" onClick={() => handleSelect(service)}>
                     {selectedService?.id === service.id ? "Selected" : "Select" }
                 </button>
                 </li>
