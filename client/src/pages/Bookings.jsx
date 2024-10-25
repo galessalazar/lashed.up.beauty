@@ -31,7 +31,10 @@ const Bookings = () => {
         </p>
       </Modal>
 
-      <div className="mt-8">
+      <div className="flex justify-center mt-8">
+        <div className="w-1/2 p-4">
+        <h2 className="text-xl font-bold">Services</h2>
+        
         <BookingForm />
       </div>
     </div>
