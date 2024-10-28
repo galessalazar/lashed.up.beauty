@@ -19,8 +19,10 @@ const BookingForm = () => {
 
   return (
     <div className="p-8 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-8">Book Your Lash Appointment</h1>
-      <ServiceSelection onServiceSelect={setSelectedService} />
+
+      {/* <h1 className="text-2xl font-bold mb-8">Book Your Lash Appointment</h1> */}
+      {/* i commented out because it was rendering twice on the page, once above the client details form and the other to the left */}
+      {/* <ServiceSelection onServiceSelect={setSelectedService} /> */}
       <DateTimePicker onDateTimeSelect={setSelectedDateTime} />
       <ClientDetailsForm onDetailsSubmit={handleDetailsSubmit} />
 
