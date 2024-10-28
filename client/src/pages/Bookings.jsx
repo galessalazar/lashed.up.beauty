@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../components/modal";
 import BookingForm from "../components/BookingForm";
+import ServiceSelection from "../components/ServiceSelection";
 
 const Bookings = () => {
 
@@ -12,10 +13,10 @@ const Bookings = () => {
 
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>Bookings</h1>
+      {/* <h1>Bookings</h1> */}
   
   {/* modal to view policies */}
-      <button onClick={toggleModal} className="mt-4 bg-gray-400 text-black px-4 py-2 rounded">View Policies</button>
+      <button onClick={toggleModal} className="mt-10 bg-gray-400 text-black px-4 py-2 rounded">View Policies</button>
 
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
         <h2 className="text-2xl font-bold mb-2">POLICIES AND PROCEDURES</h2>
@@ -38,6 +39,8 @@ const Bookings = () => {
         <BookingForm />
       </div>
     </div>
+    </div>
+
   );
 };
 
