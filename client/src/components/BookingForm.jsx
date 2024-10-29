@@ -76,9 +76,9 @@ const BookingForm = () => {
           <p>Name: {clientDetails.name}</p>
           <p>Email: {clientDetails.email}</p>
           <p>Phone: {clientDetails.phone}</p>
-          <button onClick={{handleConfirmBooking}} className="mt-4 bg-green-500 text-white p-2 rounded">
+          {/* <button onClick={{handleConfirmBooking}} className="mt-4 bg-green-500 text-white p-2 rounded">
             Confirm Booking
-          </button>
+          </button> */}
         </div>
       )}
     </div>

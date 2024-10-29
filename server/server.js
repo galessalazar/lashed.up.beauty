@@ -1,4 +1,8 @@
+// EXPRESS SERVER
+
+
 require('dotenv').config();
+const mongoose = require('mongoose');
 
 // this sets up a basic express.js server for a node.js app
 
@@ -8,7 +12,10 @@ const path = require('path');
 const db = require('./config/connection');
 const routes = require('./routes/api/index');
 
+dotenv.config();
+
 const app = express();
+// should i update this port to 5000?
 const PORT = process.env.PORT || 3001;
 
 // this is used with forms/ submits gets sent in this URLencoded format

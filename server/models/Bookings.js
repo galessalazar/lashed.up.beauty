@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
 
+// i think i need to add the email here
+
 const BookingsSchema = new Schema({
     clientName: {
         type: String,
