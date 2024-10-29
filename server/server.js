@@ -1,37 +1,38 @@
+
+require("dotenv").config();
+const mongoose = require("mongoose");
 // EXPRESS SERVER
-
-
-require('dotenv').config();
-const mongoose = require('mongoose');
 
 // this sets up a basic express.js server for a node.js app
 
-const express = require('express');
+const express = require("express");
 // path is a built in node.js module
-const path = require('path');
-const db = require('./config/connection');
-const routes = require('./routes/api/index');
+const path = require("path");
+const db = require("./config/connection");
+const routes = require("./routes/api/index");
 
-dotenv.config();
 
 const app = express();
-// should i update this port to 5000?
-const PORT = process.env.PORT || 3001;
+// should i update this port to 5000? why?
+const PORT = process.env.PORT || 5000;
 
 // this is used with forms/ submits gets sent in this URLencoded format
 app.use(express.urlencoded({ extended: true }));
-// this uses json 
+// this uses json
 app.use(express.json());
 
 // if (process.env.NODE_ENV === 'production') {
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 // }
 
-app.use(routes);
+const clientRoutes = require("./routes/api/client-routes");
+const bookingRoutes = require("./routes/api/bookings-routes");
 
-db.once('open', () => {
-app.listen(PORT, () => 
-    console.log(`Now listenting on http://localhost:${PORT}`));
+app.use('/api/clients', clientRoutes);
+app.use('/api/bookings', bookingRoutes)
+
+db.once("open", () => {
+  app.listen(PORT, () =>
+    console.log(`Now listenting on http://localhost:${PORT}`)
+  );
 });
-
-

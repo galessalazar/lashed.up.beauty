@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../components/modal";
 import BookingForm from "../components/BookingForm";
-import ServiceSelection from "../components/ServiceSelection";
+// import ServiceSelection from "../components/ServiceSelection";
 
 const Bookings = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,9 +37,9 @@ const Bookings = () => {
       </Modal>
       <div className="flex justify-center items-start mt-8 space-x-4">
 
-      <div className="w-1/2 p-4 border rounded">
+      {/* <div className="w-1/2 p-4 border rounded">
         <ServiceSelection />
-      </div>
+      </div> */}
 
         <div className="w-1/2 p-4 border rounded">
           {/* <h2 className="text-xl font-bold">Services</h2> */}

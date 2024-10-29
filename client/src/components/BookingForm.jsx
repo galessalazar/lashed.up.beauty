@@ -50,38 +50,39 @@ const BookingForm = () => {
       createBooking(bookingData);
     }
   };
+  console.log("rendering booking from");
 
   return (
     <div className="p-8 max-w-md mx-auto">
       {/* <h1 className="text-2xl font-bold mb-8">Book Your Lash Appointment</h1> */}
       {/* i commented out because it was rendering twice on the page, once above the client details form and the other to the left */}
-      {/* <ServiceSelection onServiceSelect={setSelectedService} /> */}
+      <ServiceSelection onServiceSelect={setSelectedService} />
       <DateTimePicker onDateTimeSelect={setSelectedDateTime} />
       <ClientDetailsForm onDetailsSubmit={handleDetailsSubmit} />
 
-      {selectedService && selectedDateTime && clientDetails ? (
-        <Confirmation
-          selectedService={selectedService}
-          selectedDateTime={selectedDateTime}
-          clientDetails={clientDetails}
-          onConfirm={handleConfirmBooking}
-        />
-      ) : null}
-
       {selectedService && selectedDateTime && clientDetails && (
-        <div className="mt-4">
-          <h2 className="text-lg font-semibold">Booking Summary</h2>
-          <p>Service: {selectedService.name}</p>
-          <p>Price: {selectedService.price}</p>
-          <p>Date & Time: {selectedDateTime.toLocaleString()}</p>
-          <h3 className="font-semibold">Client Details:</h3>
-          <p>Name: {clientDetails.name}</p>
-          <p>Email: {clientDetails.email}</p>
-          <p>Phone: {clientDetails.phone}</p>
-          {/* <button onClick={{handleConfirmBooking}} className="mt-4 bg-green-500 text-white p-2 rounded">
+        <>
+          <Confirmation
+            selectedService={selectedService}
+            selectedDateTime={selectedDateTime}
+            clientDetails={clientDetails}
+            onConfirm={handleConfirmBooking}
+          />
+
+          <div className="mt-4">
+            <h2 className="text-lg font-semibold">Booking Summary</h2>
+            <p>Service: {selectedService.name}</p>
+            <p>Price: {selectedService.price}</p>
+            <p>Date & Time: {selectedDateTime.toLocaleString()}</p>
+            <h3 className="font-semibold">Client Details:</h3>
+            <p>Name: {clientDetails.name}</p>
+            <p>Email: {clientDetails.email}</p>
+            <p>Phone: {clientDetails.phone}</p>
+            {/* <button onClick={{handleConfirmBooking}} className="mt-4 bg-green-500 text-white p-2 rounded">
             Confirm Booking
           </button> */}
-        </div>
+          </div>
+        </>
       )}
     </div>
   );

@@ -6,7 +6,7 @@ import Hero from "./components/Hero";
 
 import Footer from "./components/Footer";
 // needed an index.js to destructure
-import { About, Services, Bookings } from "./pages";
+import { Home, About, Services, Bookings } from "./pages";
 import BookingForm from "./components/BookingForm";
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
       {/* shows hero only on the homepage */}
       {location.pathname === "/" && <Hero />}
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/bookings" element={<Bookings />} />
