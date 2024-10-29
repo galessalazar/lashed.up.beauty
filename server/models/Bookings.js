@@ -8,6 +8,10 @@ const BookingsSchema = new Schema({
         required: true,
         index: true,
     },
+    clientEmail: {
+        type: String,
+        required: true,
+    },
     // future- add validation like regex
     clientPhone: {
         type: String,
