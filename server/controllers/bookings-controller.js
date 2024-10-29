@@ -11,6 +11,34 @@ module.exports = {
       res.status(400).json({ message: "Error creating booking" });
     }
   },
+
+  // Retrieves all bookings
+  async getAllBookings(req, res) {
+    try {
+      // retrieves all bookings
+      const bookings = await Bookings.find();
+      res.status(200).json(bookings);
+    } catch(err) {
+      console.error(err);
+      res.status(500).json({ message: "Error getting bookings" });
+    }
+  },
+
+  // get a booking by id
+
+  asyc getBookingById(req, res) {
+    const { id } = req.params;
+    try {
+      const booking = await Bookings.findById(id);
+      if (!booking) {
+        return res.status(400).json({ message: "Cannot find a booking with this id" })
+      }
+      res.status(200).json(booking);
+    } catch(err) {
+      console.error(err);
+      res.status(500).json({ message: "Error retrieving booking" });
+    }
+  },
   // update a booking by id
   async updateBooking(req, res) {
     const { id } = req.params;

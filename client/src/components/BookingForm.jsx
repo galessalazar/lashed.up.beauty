@@ -41,9 +41,11 @@ const BookingForm = () => {
   const handleConfirmBooking = () => {
     if (selectedService && selectedDateTime && clientDetails) {
       const bookingData = {
-        service: selectedService,
+        serviceName: selectedService._id,
         dateTime: selectedDateTime,
-        client: clientDetails,
+        clientName: clientDetails.name,
+        clientEmail: clientDetails.email,
+        clientPhone: clientDetails.phone,
       };
       createBooking(bookingData);
     }
