@@ -18,7 +18,7 @@ module.exports = {
       // retrieves all bookings
       const bookings = await Bookings.find();
       res.status(200).json(bookings);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.status(500).json({ message: "Error getting bookings" });
     }
@@ -26,15 +26,17 @@ module.exports = {
 
   // get a booking by id
 
-  asyc getBookingById(req, res) {
+  async getBookingById(req, res) {
     const { id } = req.params;
     try {
       const booking = await Bookings.findById(id);
       if (!booking) {
-        return res.status(400).json({ message: "Cannot find a booking with this id" })
+        return res
+          .status(400)
+          .json({ message: "Cannot find a booking with this id" });
       }
       res.status(200).json(booking);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.status(500).json({ message: "Error retrieving booking" });
     }

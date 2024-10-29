@@ -1,5 +1,8 @@
 // creates new instance of express router-handles incoming requests
 const router = require("express").Router();
+
+
+
 // imports controller functions
 const {
   getSingleClient,
@@ -7,7 +10,9 @@ const {
   createBooking,
   updateBooking,
   deleteBooking,
-} = require("../../controllers/user-controller");
+  getAllBookings,
+  getBookingById
+} = require("../../controllers/bookings-controller");
 
 // import middleware for authentication here when ready
 
@@ -16,9 +21,10 @@ const {
 router.get("/clients", getAllClients);
 router.get("/clients/:id/:clientName", getSingleClient);
 // i likely need to add this GETALLBOOKINGS UP TOP
-router.get("/bookings", getAllBookings);
-router.post("/bookings", createBooking);
-router.put("/bookings/:id", updateBooking);
-router.delete("/bookings/:id", deleteBooking);
+router.get("/", getAllBookings);
+router.get('/:id', getBookingById);
+router.post("/", createBooking);
+router.put("/:id", updateBooking);
+router.delete("/:id", deleteBooking);
 
 module.exports = router;
