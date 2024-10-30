@@ -3,12 +3,13 @@ const { Bookings } = require("../models");
 
 module.exports = {
   async createBooking(req, res) {
+    console.log("incoming booking data:", req.body);
     try {
       const booking = await Bookings.create(req.body);
       res.status(201).json(booking);
     } catch (err) {
-      console.error(err);
-      res.status(400).json({ message: "Error creating booking" });
+      console.error('Error details', err);
+      res.status(400).json({ message: "Error creating booking", error: err });
     }
   },
 

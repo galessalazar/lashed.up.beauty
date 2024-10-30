@@ -21,14 +21,15 @@ const BookingsSchema = new Schema({
         // this needs to match the services model name
         ref: 'Services',
         required: true,
+        // index: true,
     }, 
     price: {
         type: Number,
-        required: true,
+        // required: true,
     },
     duration: {
         type: Number,
-        required: true,
+        // required: true,
     },
     createdAt: {
         type: Date,
