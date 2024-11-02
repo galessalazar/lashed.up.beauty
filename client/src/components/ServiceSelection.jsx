@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 const ServiceSelection = ({ onServiceSelect }) => {
     const services = [
-        { id: 1, name: 'Classic Set', price: '$75'},
-        { id: 2, name: 'Hybrid Set', price: '$85'},
-        { id: 3, name: "Volume Set", price: '$90'}
+        { serviceName: 'Classic Set', price: '$75'},
+        { serviceName: 'Hybrid Set', price: '$85'},
+        { serviceName: "Volume Set", price: '$90'}
     ]
     // this is going to keep track of the selected service
     const [ selectedService, setSelectedService ] = useState(null);
