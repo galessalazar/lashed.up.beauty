@@ -9,7 +9,10 @@ module.exports = {
       res.status(201).json(booking);
     } catch (err) {
       console.error('Error details', err);
-      res.status(400).json({ message: "Error creating booking", error: err });
+      if (err.name === 'ValidationError') {
+        return res.status(400).json({ message: 'Validation error', error: err });
+      }
+      res.status(500).json({ message: "Error creating booking", error: err });
     }
   },
 

@@ -18,11 +18,15 @@ const BookingForm = () => {
     setClientDetails(details);
   };
 
-  const createBooking = async (bookingData) => {
-    try {
-      console.log("Form data:", { selectedService, selectedDateTime, clientDetails });
+  const handleSelectedService = (service) => {
+    setSelectedService(service);
+    console.log("Service selected:", service.name);
+  };
 
-      const response = await fetch("http://localhost:5000/api/bookings", {
+  const createBooking = async (bookingData) => {
+    console.log("Booking data to be sent", bookingData);
+    try {
+      const response = await fetch("/api/bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +47,7 @@ const BookingForm = () => {
   const handleConfirmBooking = () => {
     if (selectedService && selectedDateTime && clientDetails) {
       const bookingData = {
-        serviceName: selectedService.id,
+        serviceName: selectedService?.name,
         dateTime: selectedDateTime,
         clientName: clientDetails.name,
         clientEmail: clientDetails.email,
@@ -57,8 +61,8 @@ const BookingForm = () => {
   return (
     <div className="p-8 max-w-md mx-auto">
       {/* <h1 className="text-2xl font-bold mb-8">Book Your Lash Appointment</h1> */}
-      
-      <ServiceSelection onServiceSelect={setSelectedService} />
+
+      <ServiceSelection onServiceSelect={handleSelectedService} />
       <DateTimePicker onDateTimeSelect={setSelectedDateTime} />
       <ClientDetailsForm onDetailsSubmit={handleDetailsSubmit} />
 
@@ -80,9 +84,12 @@ const BookingForm = () => {
             <p>Name: {clientDetails.name}</p>
             <p>Email: {clientDetails.email}</p>
             <p>Phone: {clientDetails.phone}</p>
-            <button onClick={handleConfirmBooking}className="mt-4 bg-green-500 text-white p-2 rounded">
-            Confirm Booking
-          </button> 
+            <button
+              onClick={handleConfirmBooking}
+              className="mt-4 bg-green-500 text-white p-2 rounded"
+            >
+              Confirm Booking
+            </button>
           </div>
         </>
       )}
