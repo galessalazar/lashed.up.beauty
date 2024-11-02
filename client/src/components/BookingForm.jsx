@@ -20,7 +20,9 @@ const BookingForm = () => {
 
   const createBooking = async (bookingData) => {
     try {
-      const response = await fetch("/api/bookings", {
+      console.log("Form data:", { selectedService, selectedDateTime, clientDetails });
+
+      const response = await fetch("http://localhost:5000/api/bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +43,7 @@ const BookingForm = () => {
   const handleConfirmBooking = () => {
     if (selectedService && selectedDateTime && clientDetails) {
       const bookingData = {
-        serviceName: selectedService._id,
+        serviceName: selectedService.id,
         dateTime: selectedDateTime,
         clientName: clientDetails.name,
         clientEmail: clientDetails.email,
@@ -55,7 +57,7 @@ const BookingForm = () => {
   return (
     <div className="p-8 max-w-md mx-auto">
       {/* <h1 className="text-2xl font-bold mb-8">Book Your Lash Appointment</h1> */}
-      {/* i commented out because it was rendering twice on the page, once above the client details form and the other to the left */}
+      
       <ServiceSelection onServiceSelect={setSelectedService} />
       <DateTimePicker onDateTimeSelect={setSelectedDateTime} />
       <ClientDetailsForm onDetailsSubmit={handleDetailsSubmit} />
@@ -78,9 +80,9 @@ const BookingForm = () => {
             <p>Name: {clientDetails.name}</p>
             <p>Email: {clientDetails.email}</p>
             <p>Phone: {clientDetails.phone}</p>
-            {/* <button onClick={{handleConfirmBooking}} className="mt-4 bg-green-500 text-white p-2 rounded">
+            <button onClick={handleConfirmBooking}className="mt-4 bg-green-500 text-white p-2 rounded">
             Confirm Booking
-          </button> */}
+          </button> 
           </div>
         </>
       )}
