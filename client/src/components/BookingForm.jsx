@@ -20,7 +20,7 @@ const BookingForm = () => {
 
   const handleSelectedService = (service) => {
     setSelectedService(service);
-    console.log("Service selected:", service.name);
+    console.log("Service selected:", service);
   };
 
   const createBooking = async (bookingData) => {
@@ -45,22 +45,28 @@ const BookingForm = () => {
   };
 
   const handleConfirmBooking = () => {
+
+    console.log('selected service:', selectedService);
+    console.log('selected datetime:', selectedDateTime);
+    console.log('client details:', clientDetails);
+
     if (selectedService && selectedDateTime && clientDetails) {
       const bookingData = {
-        serviceName: selectedService?.name,
+        serviceName: selectedService.id,
         dateTime: selectedDateTime,
         clientName: clientDetails.name,
         clientEmail: clientDetails.email,
         clientPhone: clientDetails.phone,
       };
       createBooking(bookingData);
+    } else {
+      console.warn('Please ensure all details are filled out');
     }
   };
-  console.log("rendering booking from");
 
   return (
     <div className="p-8 max-w-md mx-auto">
-      {/* <h1 className="text-2xl font-bold mb-8">Book Your Lash Appointment</h1> */}
+     
 
       <ServiceSelection onServiceSelect={handleSelectedService} />
       <DateTimePicker onDateTimeSelect={setSelectedDateTime} />
@@ -77,7 +83,7 @@ const BookingForm = () => {
 
           <div className="mt-4">
             <h2 className="text-lg font-semibold">Booking Summary</h2>
-            <p>Service: {selectedService.name}</p>
+            <p>Service: {selectedService.serviceName}</p>
             <p>Price: {selectedService.price}</p>
             <p>Date & Time: {selectedDateTime.toLocaleString()}</p>
             <h3 className="font-semibold">Client Details:</h3>

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 const ServiceSelection = ({ onServiceSelect }) => {
     const services = [
-        { serviceName: 'Classic Set', price: '$75'},
-        { serviceName: 'Hybrid Set', price: '$85'},
-        { serviceName: "Volume Set", price: '$90'}
+        { id: '6726a31d977018f8219ec035', serviceName: 'Classic Set', price: '$75'},
+        { id: '6726a31d977018f8219ec036',serviceName: 'Hybrid Set', price: '$85'},
+        { id: '6726a31d977018f8219ec037', serviceName: "Volume Set", price: '$90'}
     ]
     // this is going to keep track of the selected service
     const [ selectedService, setSelectedService ] = useState(null);
@@ -21,7 +21,7 @@ const ServiceSelection = ({ onServiceSelect }) => {
     <ul className="space-y-4">
         {services.map((service) => (
             <li key={service.id} className={`border p-4 rounded ${selectedService?.id === service.id ? 'border-blue-500' : 'border-gray-300'}`}>
-                <h3 className='text-lg font-semibold'>{service.name}</h3>
+                <h3 className='text-lg font-semibold'>{service.serviceName}</h3>
                 <p>{service.duration} - {service.price}</p>
                 <button className="mt-2 px-4 py-2 bg-gray-500 text-white rounded" onClick={(event) => handleSelect(event, service)}>
                     {selectedService?.id === service.id ? "Selected" : "Select" }
