@@ -32,6 +32,7 @@ const BookingsSchema = new Schema({
         // required: true,
 
     },
+    // i never had the stupid date/time in here!!!
     dateTime: {
         type: Date,
         required: true,

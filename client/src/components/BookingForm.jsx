@@ -1,15 +1,17 @@
 // This file is the parent form where other components like date and time picker will be added
 
-import React, { useState } from "react";
+import { useState } from "react";
 import ServiceSelection from "./ServiceSelection";
 import DateTimePicker from "./DateTimePicker";
 import ClientDetailsForm from "./ClientDetailsForm";
 import Confirmation from "./Confirmation";
+import axios from "axios";
 
 const BookingForm = () => {
   console.log("Booking form is working");
 
   // not sure ill need this import
+  const [selectedServiceId, setSelectedServiceId] = useState('');
   const [selectedService, setSelectedService] = useState(null);
   const [selectedDateTime, setSelectedDateTime] = useState(null);
   const [clientDetails, setClientDetails] = useState(null);
@@ -20,6 +22,7 @@ const BookingForm = () => {
 
   const handleSelectedService = (service) => {
     setSelectedService(service);
+    setSelectedServiceId(service._id);
     console.log("Service selected:", service);
   };
 
@@ -44,7 +47,7 @@ const BookingForm = () => {
     }
   };
 
-  const handleConfirmBooking = () => {
+  const handleConfirmBooking = async () => {
 
     console.log('selected service:', selectedService);
     console.log('selected datetime:', selectedDateTime);
@@ -52,12 +55,14 @@ const BookingForm = () => {
 
     if (selectedService && selectedDateTime && clientDetails) {
       const bookingData = {
-        serviceName: selectedService.id,
+        serviceName: selectedServiceId,
         dateTime: selectedDateTime,
         clientName: clientDetails.name,
         clientEmail: clientDetails.email,
         clientPhone: clientDetails.phone,
       };
+
+      
       createBooking(bookingData);
     } else {
       console.warn('Please ensure all details are filled out');
