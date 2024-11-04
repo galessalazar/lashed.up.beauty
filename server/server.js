@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 const mongoose = require("mongoose");
 // EXPRESS SERVER
@@ -10,7 +9,6 @@ const express = require("express");
 const path = require("path");
 const db = require("./config/connection");
 const routes = require("./routes/api/index");
-
 
 const app = express();
 // should i update this port to 5000? why?
@@ -27,9 +25,11 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 const clientRoutes = require("./routes/api/client-routes");
 const bookingRoutes = require("./routes/api/bookings-routes");
+const serviceRoutes = require("./routes/api/services-routes");
 
-app.use('/api/clients', clientRoutes);
-app.use('/api/bookings', bookingRoutes)
+app.use("/api/clients", clientRoutes);
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/services", serviceRoutes);
 
 db.once("open", () => {
   app.listen(PORT, () =>
