@@ -1,9 +1,7 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-
 import Hero from "./components/Hero";
-
 import Footer from "./components/Footer";
 // needed an index.js to destructure
 import { Home, About, Services, Bookings } from "./pages";
