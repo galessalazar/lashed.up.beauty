@@ -30,6 +30,12 @@ const BookingsSchema = new Schema({
     duration: {
         type: Number,
         // required: true,
+
+    },
+    dateTime: {
+        type: Date,
+        required: true,
+    
     },
     createdAt: {
         type: Date,

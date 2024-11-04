@@ -19,8 +19,8 @@ module.exports = {
   // Retrieves all bookings
   async getAllBookings(req, res) {
     try {
-      // retrieves all bookings
-      const bookings = await Bookings.find();
+      // retrieves all bookings and populate the service names fields in dashboard using mongoose method populate
+      const bookings = await Bookings.find().populate('serviceName');
       res.status(200).json(bookings);
     } catch (err) {
       console.error(err);
