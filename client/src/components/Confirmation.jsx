@@ -1,4 +1,7 @@
 const Confirmation = ({ selectedService, selectedDateTime, clientDetails, onConfirm }) => {
+
+  console.log('Selected Service:', selectedService);
+  
   return (
     <div className="mt-4">
       <h2 className="text-lg font semibold">Confirm Your Booking</h2>

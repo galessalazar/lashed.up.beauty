@@ -5,7 +5,7 @@ const BookingsSchema = new Schema({
     clientName: {
         type: String,
         required: true,
-        index: true,
+        // index: true,
     },
     clientEmail: {
         type: String,
@@ -16,7 +16,7 @@ const BookingsSchema = new Schema({
         type: String,
         required: false,
     },
-    serviceName: {
+    serviceId: {
         type: Schema.Types.ObjectId,
         // this needs to match the services model name
         ref: 'Services',

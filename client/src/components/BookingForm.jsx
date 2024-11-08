@@ -5,16 +5,19 @@ import ServiceSelection from "./ServiceSelection";
 import DateTimePicker from "./DateTimePicker";
 import ClientDetailsForm from "./ClientDetailsForm";
 import Confirmation from "./Confirmation";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const BookingForm = () => {
-  console.log("Booking form is working");
+  // hook for page navigation
+  const navigate = useNavigate();
 
   // not sure ill need this import
-  const [selectedServiceId, setSelectedServiceId] = useState('');
+  const [selectedServiceId, setSelectedServiceId] = useState("null");
   const [selectedService, setSelectedService] = useState(null);
   const [selectedDateTime, setSelectedDateTime] = useState(null);
   const [clientDetails, setClientDetails] = useState(null);
+  // this tracks the bookings status
+  const [bookingsSuccess, setBookingsSuccess] = useState(false);
 
   const handleDetailsSubmit = (details) => {
     setClientDetails(details);
@@ -42,68 +45,85 @@ const BookingForm = () => {
       }
       const data = await response.json();
       console.log("Booking created", data);
+
+      // this triggers the confirmation modal
+      setBookingsSuccess(true);
+      console.log('booking success state set to true');
+
     } catch (error) {
       console.error("Error creating booking", error);
     }
   };
 
   const handleConfirmBooking = async () => {
-
-    console.log('selected service:', selectedService);
-    console.log('selected datetime:', selectedDateTime);
-    console.log('client details:', clientDetails);
+    console.log("selected service:", selectedService);
+    console.log("selected datetime:", selectedDateTime);
+    console.log("client details:", clientDetails);
 
     if (selectedService && selectedDateTime && clientDetails) {
       const bookingData = {
-        serviceName: selectedServiceId,
+        serviceId: selectedServiceId,
         dateTime: selectedDateTime,
         clientName: clientDetails.name,
         clientEmail: clientDetails.email,
         clientPhone: clientDetails.phone,
       };
 
-      
       createBooking(bookingData);
     } else {
-      console.warn('Please ensure all details are filled out');
+      console.warn("Please ensure all details are filled out");
     }
+  };
+
+  const handleCloseModal = () => {
+    // closes the modal
+    setBookingsSuccess(false);
+    // navigates user back to homepage
+    navigate("/");
   };
 
   return (
     <div className="p-8 max-w-md mx-auto">
-     
-
       <ServiceSelection onServiceSelect={handleSelectedService} />
       <DateTimePicker onDateTimeSelect={setSelectedDateTime} />
       <ClientDetailsForm onDetailsSubmit={handleDetailsSubmit} />
 
-      {selectedService && selectedDateTime && clientDetails && (
-        <>
-          <Confirmation
-            selectedService={selectedService}
-            selectedDateTime={selectedDateTime}
-            clientDetails={clientDetails}
-            onConfirm={handleConfirmBooking}
-          />
-
-          <div className="mt-4">
-            <h2 className="text-lg font-semibold">Booking Summary</h2>
-            <p>Service: {selectedService.serviceName}</p>
-            <p>Price: {selectedService.price}</p>
-            <p>Date & Time: {selectedDateTime.toLocaleString()}</p>
-            <h3 className="font-semibold">Client Details:</h3>
-            <p>Name: {clientDetails.name}</p>
-            <p>Email: {clientDetails.email}</p>
-            <p>Phone: {clientDetails.phone}</p>
-            <button
-              onClick={handleConfirmBooking}
-              className="mt-4 bg-green-500 text-white p-2 rounded"
-            >
-              Confirm Booking
-            </button>
-          </div>
-        </>
-      )}
+      {selectedService &&
+        selectedDateTime &&
+        clientDetails &&
+        !bookingsSuccess && (
+          
+            <Confirmation
+              selectedService={selectedService}
+              selectedDateTime={selectedDateTime}
+              clientDetails={clientDetails}
+              onConfirm={handleConfirmBooking}
+            />
+               )}
+            {bookingsSuccess && (
+              <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+                <div className="bg-white p-8 rounded shadow-lg max-w-md w-full">
+                  <h2 className="text-xl font-semibold text-green-600">
+                    Thank You for Your Booking!
+                  </h2>
+                  <p>
+                    Your appointment has been successfully booked. I look
+                    forward to seeing you soon.{" "}
+                  </p>
+                  <div className="mt-4 flex-justify-end">
+                    <button
+                      onClick={handleCloseModal}
+                      className="px-6 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                    >
+                      Back to Homepage
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          
+          // these below may need to go up
+      
     </div>
   );
 };

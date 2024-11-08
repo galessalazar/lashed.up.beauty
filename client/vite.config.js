@@ -13,4 +13,10 @@ export default defineConfig({
       }
     }
   },
+
+  build: {
+    rollupOptions: {
+      external: ['express', 'safe-bufffer', 'buffer'],
+    }
+  }
 });

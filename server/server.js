@@ -19,9 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 // this uses json
 app.use(express.json());
 
-// if (process.env.NODE_ENV === 'production') {
-app.use(express.static(path.join(__dirname, "../client/dist")));
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
+}
 
 const clientRoutes = require("./routes/api/client-routes");
 const bookingRoutes = require("./routes/api/bookings-routes");
