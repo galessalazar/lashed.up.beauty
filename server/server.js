@@ -7,21 +7,32 @@ const mongoose = require("mongoose");
 const express = require("express");
 // path is a built in node.js module
 const path = require("path");
+const app = express();
+// this is used with forms/ submits gets sent in this URLencoded format
+app.use(express.urlencoded({ extended: true }));
+// this uses json
+app.use(express.json());
+
+
 const authRoutes = require('./routes/api/auth');
 const db = require("./config/connection");
 const routes = require("./routes/api/index");
 
-const app = express();
+
+
+
+
+
+
 // handles login/register
+
+
 app.use('/api/auth', authRoutes);
 
 // starts the server
 const PORT = process.env.PORT || 5000;
 
-// this is used with forms/ submits gets sent in this URLencoded format
-app.use(express.urlencoded({ extended: true }));
-// this uses json
-app.use(express.json());
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist")));

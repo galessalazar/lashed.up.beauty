@@ -6,6 +6,7 @@ const router = express.Router();
 
 // register a new user (tech)
 router.post('/register', async (req, res) => {
+    console.log(req.body);
     const { email, password } = req.body;
 
     try {
