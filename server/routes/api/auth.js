@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../../models/User');
 const router = express.Router();
 
-
+// register a new user (tech)
 router.post('/register', async (req, res) => {
     const { email, password } = req.body;
 
@@ -24,6 +24,8 @@ router.post('/register', async (req, res) => {
 
         await newUser.save();
 
+        res.status(201).json({ msg: 'User registered successfully' });
+
         const payload = { userId: newUser._id };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
@@ -37,17 +39,30 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const { email, password } req.body;
+    const { email, password } = req.body;
+
+    // login route for tech
+
 
     try {
+
+        // checks if  user exists
         const user = await User.findOne({ email });
         if(!user) {
             return res.status(400).json({ message: 'Invalid email or password' });
         }
+// compares the password entered with the hashed password in DB
+        const isMatch = await bcrypt.compare(password, user.password);
+        if(!isMatch) {
+            return res.status(400).json({ msg: 'Invalid credentials'});
+        }
 
-        const payload = { userId: user._id };
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h'});
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+            expiresIn: '1h',
+        });
 
+       
+// send back token
         res.json({ token });
 
     } catch (error) {
@@ -55,5 +70,6 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+
 
 module.exports = router;

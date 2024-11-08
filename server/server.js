@@ -7,11 +7,15 @@ const mongoose = require("mongoose");
 const express = require("express");
 // path is a built in node.js module
 const path = require("path");
+const authRoutes = require('./routes/api/auth');
 const db = require("./config/connection");
 const routes = require("./routes/api/index");
 
 const app = express();
-// should i update this port to 5000? why?
+// handles login/register
+app.use('/api/auth', authRoutes);
+
+// starts the server
 const PORT = process.env.PORT || 5000;
 
 // this is used with forms/ submits gets sent in this URLencoded format
