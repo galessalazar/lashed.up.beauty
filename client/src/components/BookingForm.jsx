@@ -122,7 +122,6 @@ const BookingForm = () => {
               </div>
             )}
           
-          // these below may need to go up
       
     </div>
   );
