@@ -8,6 +8,7 @@ import { Home, About, Services, Bookings } from "./pages";
 import BookingForm from "./components/BookingForm";
 import LoginForm from "./components/Login.Form.jsx";
 import Dashboard from "./components/Dashboard";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 const App = () => {
   const location = useLocation();
@@ -23,7 +24,10 @@ const App = () => {
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/book-now" element={<BookingForm />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path ='/dashboard' element={<Dashboard />} />
+        <Route path ='/dashboard' element={
+          <PrivateRoute><Dashboard /></PrivateRoute>
+        } 
+        />
       </Routes>
       <Footer />
     </>
