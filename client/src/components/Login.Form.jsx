@@ -19,10 +19,10 @@ const LoginForm = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // save the jwt token in localstorage
-        localStorage.setItem("token", data.token);
+        // save the jwt token in localstorage, i changed the key from 'token' to 'authToken' not sure which one to use
+        localStorage.setItem("authToken", data.token);
         // redirect to dashboard
-        window.location.href = "dashboard";
+        window.location.href = "/dashboard";
       } else {
         const errorData = await response.json();
         setError(errorData.message || "Login failed");
@@ -37,7 +37,7 @@ const LoginForm = () => {
     <form onSubmit={handleLogin}>
       <div>
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}
+        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required
         />
       </div>
 
@@ -47,11 +47,11 @@ const LoginForm = () => {
           type="password"
           id="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)} required
         />
       </div>
 
-      {error && <div>{error}</div>}
+      {error && <div style={{ color: 'red' }}>{error}</div>}
 
       <button type="submit">Login</button>
     </form>
