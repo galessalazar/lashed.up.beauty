@@ -14,22 +14,23 @@ const Dashboard = () => {
     // if no token is found, redirect to login page
     if (!token) {
       navigate('/login');
-    } 
+      return;
+    } else {
 
     fetchBookings(token);
-    fetchServices();
-    
+    fetchServices(token);
+    } 
   }, [navigate]);
 
-    const fetchBookings = async () => {
+    const fetchBookings = async (token) => {
       try {
         // retrieve token from localstorage
-        const token = localStorage.getItem('token');
+        // const token = localStorage.getItem('token');
         // if this doesnt work try ('http://localhost:5000/bookings') instead of /api
         const response = await axios.get("/api/bookings", {
           headers: {
             // adds token in the request header
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${localStorage.getItem(token)}`,
           },
         });
         setBookings(response.data);
@@ -39,9 +40,15 @@ const Dashboard = () => {
       }
     };
 
-    const fetchServices = async () => {
+    const fetchServices = async (token) => {
       try {
-        const response = await axios.get('/api/services');
+        // const token = localStorage.getItem('token');
+        const response = await axios.get('/api/services', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
         setServices(response.data);
       } catch (error) {
         setError('Error fetching services');
@@ -55,6 +62,10 @@ const Dashboard = () => {
     },{});
 
     const getServiceName = (serviceId) => serviceMap[serviceId] || "Unknown Service";
+
+    if (!localStorage.getItem('token')) {
+      return null;
+    }
     
   
 
