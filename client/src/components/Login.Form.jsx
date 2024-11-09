@@ -9,18 +9,20 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      // login request using fetch for post method/ dont use the whole http url that bypasses the proxy setup and youll get cors errors
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        // sending email/password as json in the request body
         body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        // save the jwt token in localstorage, i changed the key from 'token' to 'authToken' not sure which one to use
-        localStorage.setItem("authToken", data.token);
+        // save the jwt token in localstorage, i changed the key from 'token' to 'token' not sure which one to use
+        localStorage.setItem("token", data.token);
         // redirect to dashboard
         window.location.href = "/dashboard";
       } else {
