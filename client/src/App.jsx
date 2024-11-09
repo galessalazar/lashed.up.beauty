@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 // needed an index.js to destructure
 import { Home, About, Services, Bookings } from "./pages";
 import BookingForm from "./components/BookingForm";
-import LoginForm from "./components/Login.Form.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 
@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/book-now" element={<BookingForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path ='/dashboard' element={
           <PrivateRoute><Dashboard /></PrivateRoute>
         } 

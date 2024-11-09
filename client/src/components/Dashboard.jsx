@@ -8,8 +8,15 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
+        // retrieve token from localstorage
+        const token = localStorage.getItem('authToken');
         // if this doesnt work try ('http://localhost:5000/bookings') instead of /api
-        const response = await axios.get("/api/bookings");
+        const response = await axios.get("/api/bookings", {
+          headers: {
+            // adds token in the request header
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setBookings(response.data);
       } catch (error) {
         console.error("error fetching bookings:", error);
