@@ -16,20 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const authRoutes = require("./routes/api/auth");
-const db = require("./config/connection");
-const routes = require("./routes/api/index");
-
-// handles login/register
-
 app.use("/api/auth", authRoutes);
-
-// starts the server
-const PORT = process.env.PORT || 5000;
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/dist")));
-}
-
 const clientRoutes = require("./routes/api/client-routes");
 const bookingRoutes = require("./routes/api/bookings-routes");
 const serviceRoutes = require("./routes/api/services-routes");
@@ -37,6 +24,16 @@ const serviceRoutes = require("./routes/api/services-routes");
 app.use("/api/clients", clientRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/services", serviceRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
+}
+
+const db = require("./config/connection");
+// const routes = require("./routes/api/index");
+
+// starts the server
+const PORT = process.env.PORT || 5000;
 
 db.once("open", () => {
   app.listen(PORT, () =>

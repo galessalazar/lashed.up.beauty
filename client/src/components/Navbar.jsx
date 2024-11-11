@@ -8,12 +8,10 @@ const Navbar = () => {
         <div className="relative flex h-10 items-center justify-between">
           {/* just hitting enter and putting in the name moved the rest of the navbar contents to the rigth, no se but it worked */}
           <div className="flex items-center flex-shrink-0">
-            <span
-              className="text-white text-lg font-bold"
-              style={{ fontFamily: "Playfair Display" }}
-            >
+            <Link to='/'           className="text-white text-lg font-bold"
+              style={{ fontFamily: "Playfair Display" }}>
               Lashed Up Beauty Bar
-            </span>
+            </Link>
           </div>
           <div className="hidden sm:ml-6 sm:block">
             <div className="flex space-x-4 ml-auto">
@@ -52,7 +50,7 @@ const Navbar = () => {
                 aria-labelledby="user-menu-button"
                 tabIndex="-1"
               >
-                <Link
+                {/* <Link
                   to="#"
                   className="block px-4 py-1 text-sm text-gray-700"
                   role="menuitem"
@@ -78,7 +76,7 @@ const Navbar = () => {
                   id="user-menu-item-2"
                 >
                   Sign out
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const middleWare = (req, res, next) => {
+const authMiddleWare = (req, res, next) => {
     const token = req.header('Authorization');
 
     if (!token) {
@@ -9,8 +9,10 @@ const middleWare = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token.split("")[1], process.env.JWT_SECRET);
+        const decoded = jwt.verify(token.split(" ")[1], process.env.JWT_SECRET);
+        // attach user data to request
         req.user = decoded;
+        // proceed to next middleware or route handler
         next();
     } catch (err) {
         return res.status(400).json({ message: 'Invalid or expired token' });

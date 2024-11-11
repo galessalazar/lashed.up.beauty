@@ -10,6 +10,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    console.log("token", token);
 
     // if no token is found, redirect to login page
     if (!token) {
@@ -23,26 +24,32 @@ const Dashboard = () => {
   }, [navigate]);
 
     const fetchBookings = async (token) => {
+
       try {
+
         // retrieve token from localstorage
         // const token = localStorage.getItem('token');
         // if this doesnt work try ('http://localhost:5000/bookings') instead of /api
         const response = await axios.get("/api/bookings", {
           headers: {
             // adds token in the request header
-            Authorization: `Bearer ${localStorage.getItem(token)}`,
+            Authorization: `Bearer ${token}`,
+            "Content-Type": 'application/json'
           },
         });
         setBookings(response.data);
       } catch (error) {
         setError('Error fetching bookings');
-        console.error("error fetching bookings:", error);
+        console.error("error fetching bookings:", error.response ? error.response.data : error);
+        console.log('request headers:', error.config.headers);
       }
     };
 
     const fetchServices = async (token) => {
       try {
-        // const token = localStorage.getItem('token');
+        // i commented this out dk if i need it
+        //  const token = localStorage.getItem('token');
+         console.log('token from localstorage:', token);
         const response = await axios.get('/api/services', {
           headers: {
             Authorization: `Bearer ${token}`,
