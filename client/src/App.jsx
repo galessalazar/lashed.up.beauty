@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 // needed an index.js to destructure
-import { Home, About, Services, Bookings } from "./pages";
+import { Home, About, Services, Bookings, ContactMe } from "./pages";
 import BookingForm from "./components/BookingForm";
 import LoginPage from "./pages/LoginPage.jsx";
 import Dashboard from "./components/Dashboard";
@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/bookings" element={<Bookings />} />
+        <Route path="/contact" element={<ContactMe />} />
         <Route path="/book-now" element={<BookingForm />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path ='/dashboard' element={

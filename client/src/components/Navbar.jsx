@@ -35,7 +35,7 @@ const Navbar = () => {
                 Scheduling
               </Link>
               <Link
-                to="/about"
+                to="/contact"
                 className="rounded-md px-3 py-1 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Contact Me
