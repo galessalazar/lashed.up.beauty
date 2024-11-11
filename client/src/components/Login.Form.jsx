@@ -37,26 +37,84 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleLogin}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required
+      <div style={styles.inputGroup}>
+        <label htmlFor="email" style={styles.label}>
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          style={styles.input}
         />
       </div>
 
-      <div>
-        <label htmlFor="password">Password</label>
+      <div style={styles.inputGroup}>
+        <label htmlFor="password" style={styles.label}>
+          Password
+        </label>
         <input
           type="password"
           id="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)} required
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          style={styles.input}
         />
       </div>
 
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && <div style={{ color: "red" }}>{error}</div>}
 
-      <button type="submit">Login</button>
+      <button type="submit" style={styles.button}>
+        Login
+      </button>
     </form>
   );
+};
+
+const styles = {
+  inputGroup: {
+    marginBottom: "15px",
+  },
+  label: {
+    fontSize: '14px',
+    color: '#555',
+    marginBottom: '5px',
+    display: 'block',
+  },
+  input: {
+    width: '100%',
+    padding: '12px 16px',
+    fontSize: '16px',
+    borderRadius: '8px',
+    border: '1px solid #ddd',
+    marginBottom: '8px',
+    outline: 'none',
+    transition: 'border-color 0.3s ease',
+  },
+  inputFocus: {
+    borderColor: '#007BFF',
+  },
+  errorMessage: {
+    color: 'red',
+    fontSize: '14px',
+    marginBottom: '10px',
+  },
+  button: {
+    padding: '12px 16px',
+    backgroundColor: '#007BFF',
+    color: '#fff',
+    fontSize: '16px',
+    fontWeight: '500',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  },
+  bottonHover: {
+    backgroundColor: '#0056b3',
+  },
 };
 export default LoginForm;
