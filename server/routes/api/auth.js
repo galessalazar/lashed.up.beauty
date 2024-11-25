@@ -8,7 +8,7 @@ const router = express.Router();
 
 // register a new user (tech)
 router.post("/register", async (req, res) => {
-  console.log(req.body);
+  console.log('Incoming request body:', req.body);
   const { email, password } = req.body;
 
   try {
@@ -26,6 +26,7 @@ router.post("/register", async (req, res) => {
     });
 
     await newUser.save();
+    console.log('User saved:', newUser);
 
     const payload = { userId: newUser._id, role: newUser.role };
      const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -37,13 +38,22 @@ router.post("/register", async (req, res) => {
    
 
   } catch (error) {
-    console.error(error);
+    console.error('Error saving user:', error);
     res.status(500).json({ message: "Server error" });
   }
 });
 
 router.post("/login", async (req, res) => {
+  try {
+  console.log('Received login request:', req.body);
+
   const { email, password } = req.body;
+  console.log('Incoming request body:', req.body);
+
+  } catch (error) {
+    console.error('Error parsing request body:', error);
+    res.status(500).json({ message: 'Server error'});
+  }
 
   // login route for tech
 

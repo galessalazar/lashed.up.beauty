@@ -1,48 +1,42 @@
 import { useState } from "react";
 
-const LoginForm = () => {
+const RegistrationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
- 
-
-
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     try {
-      // login request using fetch for post method/ dont use the whole http url that bypasses the proxy setup and youll get cors errors
       const response = await fetch(
-        "https://lashed-up-beauty.onrender.com/api/auth/login",
+        "https://lashed-up-beauty.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          // sending email/password as json in the request body
+
           body: JSON.stringify({ email, password }),
         }
       );
 
       if (response.ok) {
         const data = await response.json();
-        // save the jwt token in localstorage, i changed the key from 'token' to 'token' not sure which one to use
-        localStorage.setItem("token", data.token);
-        // redirect to dashboard
-        window.location.href = "/dashboard";
+        setMessage("Registration successful! Please log in.");
       } else {
         const errorData = await response.json();
-        setError(errorData.message || "Login failed");
+        setError(errorData.message || "Registration failed");
       }
     } catch (error) {
-      console.error("Error logging in", error);
-      setError("An error occured while logging in");
+      console.error("Error registering", error);
+      setError("An error occured while registering");
     }
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleRegister}>
       <div style={styles.inputGroup}>
         <label htmlFor="email" style={styles.label}>
           Email
@@ -72,9 +66,10 @@ const LoginForm = () => {
       </div>
 
       {error && <div style={{ color: "red" }}>{error}</div>}
+      {message && <div style={{ color: "green" }}>{message}</div>}
 
       <button type="submit" style={styles.button}>
-        Login
+        Register
       </button>
     </form>
   );
@@ -100,14 +95,6 @@ const styles = {
     outline: "none",
     transition: "border-color 0.3s ease",
   },
-  inputFocus: {
-    borderColor: "#007BFF",
-  },
-  errorMessage: {
-    color: "red",
-    fontSize: "14px",
-    marginBottom: "10px",
-  },
   button: {
     padding: "12px 16px",
     backgroundColor: "#007BFF",
@@ -119,8 +106,6 @@ const styles = {
     cursor: "pointer",
     transition: "background-color 0.3s ease",
   },
-  bottonHover: {
-    backgroundColor: "#0056b3",
-  },
 };
-export default LoginForm;
+
+export default RegistrationForm;
