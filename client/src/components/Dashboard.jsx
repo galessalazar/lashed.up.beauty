@@ -29,8 +29,7 @@ const Dashboard = () => {
 
         // retrieve token from localstorage
         // const token = localStorage.getItem('token');
-        // if this doesnt work try ('http://localhost:5000/bookings') instead of /api
-        const response = await axios.get("/api/bookings", {
+        const response = await axios.get("https://lashed-up-beauty.onrender.com/api/bookings", {
           headers: {
             // adds token in the request header
             Authorization: `Bearer ${token}`,
