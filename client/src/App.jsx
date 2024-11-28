@@ -30,7 +30,11 @@ const App = () => {
         <Route path="/contact" element={<ContactMe />} />
         <Route path="/book-now" element={<BookingForm />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
             </PrivateRoute>
           }
         />
