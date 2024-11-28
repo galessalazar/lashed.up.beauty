@@ -27,6 +27,8 @@ const Dashboard = () => {
 
       try {
 
+        console.log('Token used for authorization:', token);
+
         // retrieve token from localstorage
         // const token = localStorage.getItem('token');
         const response = await axios.get("https://lashed-up-beauty.onrender.com/api/bookings", {
@@ -36,6 +38,8 @@ const Dashboard = () => {
             "Content-Type": 'application/json'
           },
         });
+
+        console.log('Request headers sent:', response.config.headers);
         setBookings(response.data);
       } catch (error) {
         setError('Error fetching bookings');
@@ -49,7 +53,7 @@ const Dashboard = () => {
         // i commented this out dk if i need it
         //  const token = localStorage.getItem('token');
          console.log('token from localstorage:', token);
-        const response = await axios.get('/api/services', {
+        const response = await axios.get('https://lashed-up-beauty.onrender.com/api/services', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

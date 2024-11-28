@@ -18,6 +18,7 @@ const authMiddleWare = (req, res, next) => {
     // proceed to next middleware or route handler
     next();
   } catch (err) {
+    console.error('jwt error:', err);
     return res.status(400).json({ message: "Invalid or expired token" });
   }
 };

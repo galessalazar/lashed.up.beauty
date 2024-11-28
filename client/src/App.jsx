@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -25,9 +30,9 @@ const App = () => {
         <Route path="/contact" element={<ContactMe />} />
         <Route path="/book-now" element={<BookingForm />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path ='/dashboard' element={
-          <PrivateRoute><Dashboard /></PrivateRoute>
-        } 
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard />
+            </PrivateRoute>
+          }
         />
       </Routes>
       <Footer />
