@@ -150,6 +150,10 @@ const tableCellStyle = {
 const actionButtonStyle = {
   marginRight: '10px',
   padding: '5px 10px',
+  backgroundColor: '#e0e0e0',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
   cursor: 'pointer',
-}
+  fontSize: '14px,'
+};
 export default Dashboard;
