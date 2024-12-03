@@ -27,14 +27,21 @@ app.use("/api/services", serviceRoutes);
 
 
 if (process.env.NODE_ENV === "production") {
+
+  require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+
   app.use(express.static(path.join(__dirname, '../client/dist')));
+
+} else {
+  require('dotenv').config({ path: path.resolve(__dirname, '.env.local') });
+}
 
 
   // for any route that doesnt match my API routes, this serves the react app
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
   });
-}
+
 
 const db = require("./config/connection");
 // const routes = require("./routes/api/index");
