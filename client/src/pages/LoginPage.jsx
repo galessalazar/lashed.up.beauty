@@ -1,6 +1,7 @@
 // import { useState } from "react";
-
+import RegistrationForm from '../components/RegistrationForm';
 import LoginForm from "../components/Login.Form";
+
 
 const LoginPage = () => {
 
@@ -10,8 +11,12 @@ const LoginPage = () => {
       <div style={styles.formContainer}>
         <h2 style={styles.heading}>Login</h2>
         <LoginForm />
-       
 
+        <div style={{ margin: '20px 0', textAlign: 'center' }}>
+          <span style={{ fontSize: '14px', color: '#888' }}>or</span>
+          </div>       
+        <h2 style={styles.heading}>Register</h2>
+        <RegistrationForm />
       </div>
     </div>
   );
