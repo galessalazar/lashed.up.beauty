@@ -3,7 +3,7 @@
 Lashed Up Beauty is a web application that allows clients to seamlessly book lash appointments while giving lash technicians an efficient way to manage bookings. Built with a React frontend and a MongoDB backend, this app ensures a smooth and responsive user experience.
 
 ## Installation
-### Clone the Repository
+#### Clone the Repository
 
 ```bash
 git clone https://github.com/galessalazar/lashed.up.beauty.git
@@ -11,14 +11,14 @@ cd lashed.up.beauty
 ```
 ## Usage
 
-### Install Dependencies
+#### Install Dependencies
 
 ```bash
 npm run install
 ```
 This installs all required dependencies for both the frontend and backend.
 
-### Run the App
+#### Run the App
 ```bash
 npm run develop
 ```
