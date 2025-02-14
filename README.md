@@ -36,6 +36,8 @@ npm run seed
 ```
 Seed the Database (if needed)
 
+![Alt text](client/public/images/Lashed_Up_Beauty.png)
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
