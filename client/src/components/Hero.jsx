@@ -37,7 +37,7 @@ const Hero = () => {
 
         <Card
           title="Services"
-          content="Explore services offered and contact me for your tailored needs...or whatever tf you want to put here to get them to click to see your services and pricing."
+          content="Explore services offered and contact me for your tailored needs...whatever you want to put here to get them to click to see your services and pricing."
           link="/services"
         />
         <Card
