@@ -113,7 +113,7 @@ const BookingForm = () => {
                   <div className="mt-4 flex-justify-end">
                     <button
                       onClick={handleCloseModal}
-                      className="px-6 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                      className="px-6 py-2 bg-gray-500 text-white rounded hover:bg-green-600"
                     >
                       Back to Homepage
                     </button>
