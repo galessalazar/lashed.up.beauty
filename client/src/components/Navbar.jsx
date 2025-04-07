@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,8 +7,11 @@ const Navbar = () => {
         <div className="relative flex h-10 items-center justify-between">
           {/* just hitting enter and putting in the name moved the rest of the navbar contents to the rigth, no se but it worked */}
           <div className="flex items-center flex-shrink-0">
-            <Link to='/'           className="text-white text-lg font-bold"
-              style={{ fontFamily: "Playfair Display" }}>
+            <Link
+              to="/"
+              className="text-white text-lg font-bold"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Lashed Up Beauty Bar
             </Link>
           </div>
@@ -41,9 +43,13 @@ const Navbar = () => {
                 Contact Me
               </Link>
 
-              <Link to='/login' className="rounded-md px-3 py-1 text sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</Link>
+              <Link
+                to="/login"
+                className="rounded-md px-3 py-1 text sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >
+                Login
+              </Link>
             </div>
-
           </div>
         </div>
       </div>

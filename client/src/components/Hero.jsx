@@ -25,7 +25,10 @@ const Hero = () => {
   return (
     <div>
       <div style={heroStyle}>
-        <h1>Glamour in Every Lash Transformation To Be The Best Looking Hyna Out There....obv update to whatever</h1>
+        <h1>
+          Glamour in Every Lash Transformation To Be The Best Looking Hyna Out
+          There....obv update to whatever
+        </h1>
       </div>
       <div style={borderStyle}></div>
       <div style={sectionStyle}>

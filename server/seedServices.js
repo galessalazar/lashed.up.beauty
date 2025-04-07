@@ -30,24 +30,27 @@ const services = [
 ];
 
 async function seedServices() {
-    try {
-        await mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true})
-        console.log('connected to mongodb');
+  try {
+    await mongoose.connect(mongoURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("connected to mongodb");
 
-        const insertedServices = await Services.insertMany(services);
-        console.log('Services inserted', insertedServices);
+    const insertedServices = await Services.insertMany(services);
+    console.log("Services inserted", insertedServices);
 
-        insertedServices.forEach(service => {
-            console.log(`inserted service:, ${service.serviceName}, ID: ${service._id}`)
-        })
-    } catch (error) {
-        console.error('error inserting services:', error);
-    } finally {
-        await mongoose.disconnect();
-        console.log('disconnected from mongodb')
-    }
-
+    insertedServices.forEach((service) => {
+      console.log(
+        `inserted service:, ${service.serviceName}, ID: ${service._id}`
+      );
+    });
+  } catch (error) {
+    console.error("error inserting services:", error);
+  } finally {
+    await mongoose.disconnect();
+    console.log("disconnected from mongodb");
+  }
 }
 
 seedServices();
-

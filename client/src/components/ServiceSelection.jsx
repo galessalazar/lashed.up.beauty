@@ -1,3 +1,5 @@
+// TRY USESTATE OR USECONTEXT FOR ALL THESE PROPS VALIDATION WARNINGS IN ALL THE COMPONENTS
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -9,7 +11,9 @@ const ServiceSelection = ({ onServiceSelect }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get("https://lashed-up-beauty.onrender.com/api/services");
+        const response = await axios.get(
+          "https://lashed-up-beauty.onrender.com/api/services"
+        );
         setServices(response.data);
       } catch (error) {
         console.error("Error fetching services:", error);

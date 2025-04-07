@@ -1,20 +1,22 @@
 // creates a new booking
-const  mongoose  = require("mongoose");
-const  Bookings  = require("../models/Bookings")
-const Services  = require("../models/Services");
+const mongoose = require("mongoose");
+const Bookings = require("../models/Bookings");
+const Services = require("../models/Services");
 
+// makes createBooking available for use in other files like routes
 module.exports = {
+  // marks function as asynchronous (represents HTTP client submitted data, represents HTTP response)
   async createBooking(req, res) {
     console.log("incoming booking data:", req.body);
     try {
-
-      const { serviceId, dateTime, clientName, clientEmail, clientPhone } = req.body;
+      // extract/ destructure properties from req.body
+      const { serviceId, dateTime, clientName, clientEmail, clientPhone } =
+        req.body;
 
       // checks if serviceId exists in services collection
-
       const service = await Services.findById(serviceId);
       if (!service) {
-        return res.status(404).json({ message: 'Service not found' });
+        return res.status(404).json({ message: "Service not found" });
       }
 
       const booking = new Bookings({
@@ -23,7 +25,7 @@ module.exports = {
         dateTime,
         clientName,
         clientEmail,
-        clientPhone
+        clientPhone,
       });
 
       // save the booking
@@ -48,7 +50,7 @@ module.exports = {
       const bookings = await Bookings.find().populate(
         "serviceId",
         "serviceName"
-      )
+      );
       res.status(200).json(bookings);
     } catch (err) {
       console.error(err);
@@ -61,7 +63,11 @@ module.exports = {
   async getBookingById(req, res) {
     const { id } = req.params;
     try {
-      const booking = await Bookings.findById(id).populate('serviceId', 'serviceName');
+      // wait for booking to be found then populates the serviceId field w id and name
+      const booking = await Bookings.findById(id).populate(
+        "serviceId",
+        "serviceName"
+      );
       if (!booking) {
         return res
           .status(400)
@@ -75,10 +81,13 @@ module.exports = {
   },
   // update a booking by id
   async updateBooking(req, res) {
+    // extracts route paramaters from URL, with this we exract the id from URL
     const { id } = req.params;
     try {
       const updateBooking = await Bookings.findByIdAndUpdate(id, req.body, {
+        // updates the updated document instead of the old one, important
         new: true,
+        // forces Mongoose to run schema validation rules, like if a valid email is required 
         runValidators: true,
       });
       if (!updateBooking) {
