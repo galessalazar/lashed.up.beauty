@@ -103,7 +103,7 @@ const BookingForm = () => {
             {bookingsSuccess && (
               <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
                 <div className="bg-white p-8 rounded shadow-lg max-w-md w-full">
-                  <h2 className="text-xl font-semibold text-green-600">
+                  <h2 className="text-xl font-semibold text-gray-500">
                     Thank You for Your Booking!
                   </h2>
                   <p>
@@ -113,7 +113,7 @@ const BookingForm = () => {
                   <div className="mt-4 flex-justify-end">
                     <button
                       onClick={handleCloseModal}
-                      className="px-6 py-2 bg-gray-500 text-white rounded hover:bg-green-600"
+                      className="px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-500"
                     >
                       Back to Homepage
                     </button>
