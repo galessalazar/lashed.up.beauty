@@ -7,7 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
+        // backend server
         target: 'http://localhost:5000',
+        // allows the proxy server to work with the cors errors, changes the origin
         changeOrigin: true,
         
       }
