@@ -1,9 +1,9 @@
-// creates new instance of express router-handles incoming requests
+// creates new instance of express router-instead of creating an entire Express app like on server.js
 const router = require("express").Router();
 const authMiddleWare = require("../../middleware/authMiddleware");
 const Bookings = require("../../models/Bookings");
 
-// imports controller functions
+// imports controller functions from bookings-controller
 const {
   createBooking,
   updateBooking,

@@ -1,3 +1,5 @@
+// CONTROLLERS handle HTTP requests and responses
+
 // creates a new booking
 const mongoose = require("mongoose");
 const Bookings = require("../models/Bookings");
@@ -8,6 +10,8 @@ module.exports = {
   // marks function as asynchronous (represents HTTP client submitted data, represents HTTP response)
   async createBooking(req, res) {
     console.log("incoming booking data:", req.body);
+
+    // try/catch used to handle errors
     try {
       // extract/ destructure properties from req.body
       const { serviceId, dateTime, clientName, clientEmail, clientPhone } =

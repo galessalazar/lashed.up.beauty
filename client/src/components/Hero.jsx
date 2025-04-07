@@ -26,8 +26,7 @@ const Hero = () => {
     <div>
       <div style={heroStyle}>
         <h1>
-          Glamour in Every Lash Transformation To Be The Best Looking Hyna Out
-          There....obv update to whatever
+          Glamour in Every Lash Transformation, you can put an image or message of any kind
         </h1>
       </div>
       <div style={borderStyle}></div>

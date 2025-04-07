@@ -6,6 +6,6 @@ const clientRoutes = require("./client-routes");
 
 router.use("/bookings", bookingsRoutes);
 router.use("/services", servicesRoutes);
-router.use('/clients', clientRoutes);
+router.use("/clients", clientRoutes);
 
 module.exports = router;
