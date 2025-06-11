@@ -19,6 +19,12 @@ router.get("/:id", authMiddleWare, getBookingById);
 // allow public to book without login
 router.post("/", createBooking);
 router.put("/:id", authMiddleWare, updateBooking);
+// move to auth
+
+
+
+
+
 router.delete("/:id", authMiddleWare, deleteBooking);
 
 module.exports = router;
