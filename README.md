@@ -1,4 +1,4 @@
-# [Lashed Up Beauty - Online Lash Booking App](https://lashed-up-beauty.onrender.com) 
+# [Lashed Up Beauty](https://lashed-up-beauty.onrender.com)  - Online Lash Booking App
 
 Lashed Up Beauty is a web application that allows clients to book lash appointments while giving lash technicians an efficient way to manage bookings. Built with a React frontend and a MongoDB backend, this app ensures a smooth and responsive user experience.
 
